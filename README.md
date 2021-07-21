@@ -32,6 +32,8 @@ however I had trouble getting this setup so I used plain sql.
 ### [Exception Mappers](src/main/java/com/hypermarketAPI/exception)
 * These will catch any exception thrown and return the proper response, reducing the amount of try
   catch blocks I would need. (also doing this because I haven't been able to use this before)
-
+  
+### [pom.xml](pom.xml)
+* I need to clean this up
 
   
