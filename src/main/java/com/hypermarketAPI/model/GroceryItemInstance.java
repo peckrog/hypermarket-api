@@ -1,35 +1,28 @@
 package com.hypermarketAPI.model;
 
-import com.hypermarketAPI.model.GroceryItem;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDate;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
-import io.swagger.annotations.*;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
+public class GroceryItemInstance extends GroceryItem {
 
-public class GroceryItemInstance extends GroceryItem  {
-  
-  private @Valid Long id;
-  private @Valid Long hypermarketId;
+  private @Valid
+  Long id;
+  private @Valid
+  Long hypermarketId;
 
   /**
+   *
    **/
   public GroceryItemInstance id(Long id) {
     this.id = id;
     return this;
   }
 
-  
 
-  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
   @NotNull
@@ -39,16 +32,17 @@ public class GroceryItemInstance extends GroceryItem  {
 
   public void setId(Long id) {
     this.id = id;
-  }/**
+  }
+
+  /**
+   *
    **/
   public GroceryItemInstance hypermarketId(Long hypermarketId) {
     this.hypermarketId = hypermarketId;
     return this;
   }
 
-  
 
-  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("hypermarketId")
   @NotNull
@@ -91,8 +85,8 @@ public class GroceryItemInstance extends GroceryItem  {
   }
 
   /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
+   * Convert the given object to string with each line indented by 4 spaces (except the first
+   * line).
    */
   private String toIndentedString(java.lang.Object o) {
     if (o == null) {

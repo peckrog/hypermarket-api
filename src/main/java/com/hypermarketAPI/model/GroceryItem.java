@@ -1,35 +1,31 @@
 package com.hypermarketAPI.model;
 
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
-import io.swagger.annotations.*;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
+public class GroceryItem {
 
-public class GroceryItem   {
-  
-  private @Valid String itemName;
-  private @Valid String brand;
-  private @Valid LocalDate expirationDate;
+  private @Valid
+  String itemName;
+  private @Valid
+  String brand;
+  private @Valid
+  LocalDate expirationDate;
 
   /**
+   *
    **/
   public GroceryItem itemName(String itemName) {
     this.itemName = itemName;
     return this;
   }
 
-  
 
-  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("itemName")
   @NotNull
@@ -39,16 +35,17 @@ public class GroceryItem   {
 
   public void setItemName(String itemName) {
     this.itemName = itemName;
-  }/**
+  }
+
+  /**
+   *
    **/
   public GroceryItem brand(String brand) {
     this.brand = brand;
     return this;
   }
 
-  
 
-  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("brand")
   @NotNull
@@ -58,16 +55,17 @@ public class GroceryItem   {
 
   public void setBrand(String brand) {
     this.brand = brand;
-  }/**
+  }
+
+  /**
+   *
    **/
   public GroceryItem expirationDate(LocalDate expirationDate) {
     this.expirationDate = expirationDate;
     return this;
   }
 
-  
 
-  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("expirationDate")
   @NotNull
@@ -102,7 +100,7 @@ public class GroceryItem   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GroceryItem {\n");
-    
+
     sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
@@ -111,8 +109,8 @@ public class GroceryItem   {
   }
 
   /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
+   * Convert the given object to string with each line indented by 4 spaces (except the first
+   * line).
    */
   private String toIndentedString(java.lang.Object o) {
     if (o == null) {

@@ -1,33 +1,26 @@
 package com.hypermarketAPI.model;
 
-import com.hypermarketAPI.model.Hypermarket;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
-import io.swagger.annotations.*;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
+public class HypermarketInstance extends Hypermarket {
 
-public class HypermarketInstance extends Hypermarket  {
-  
-  private @Valid Long id;
+  private @Valid
+  Long id;
 
   /**
+   *
    **/
   public HypermarketInstance id(Long id) {
     this.id = id;
     return this;
   }
 
-  
 
-  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
   @NotNull
@@ -68,8 +61,8 @@ public class HypermarketInstance extends Hypermarket  {
   }
 
   /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
+   * Convert the given object to string with each line indented by 4 spaces (except the first
+   * line).
    */
   private String toIndentedString(java.lang.Object o) {
     if (o == null) {
