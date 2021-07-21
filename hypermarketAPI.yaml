@@ -115,9 +115,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-
-
-
+    get:
+      summary: retrieve all grocery items for a given hypermarket
+      operationId: getGroceryItemsForHypermarket
+      tags:
+        - grocery items
+      parameters:
+        - name: hypermarketId
+          in: path
+          required: true
+          description: The id of the hypermarket to create the grocery item for
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: all grocery items for the requested hypermarket
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroceryItemInstance'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 components:
   schemas:
     Hypermarket:
