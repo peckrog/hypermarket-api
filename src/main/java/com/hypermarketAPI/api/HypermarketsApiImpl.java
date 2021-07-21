@@ -50,6 +50,14 @@ public class HypermarketsApiImpl implements HypermarketsApi {
     }
 
     @Override
+    public Response getGroceryItemsForHypermarket(Long hypermarketId) {
+        final GroceryItemDAO groceryItemDAO = new GroceryItemDAO();
+        final List<GroceryItemInstance> groceryItemInstances = groceryItemDAO.getGroceryItemByHypermarketId(hypermarketId);
+
+        return Response.status(Response.Status.OK).entity(groceryItemInstances).build();
+    }
+
+    @Override
     public Response getHypermarketById(Long hypermarketId) {
         final HypermarketDAO hypermarketDAO = new HypermarketDAO();
         final HypermarketInstance hypermarketInstance = hypermarketDAO.getHypermarketById(hypermarketId);

@@ -90,4 +90,35 @@ public class GroceryItemDAO {
             throw new DAOException(exception);
         }
     }
+
+    public List<GroceryItemInstance> getGroceryItemByHypermarketId(final long hypermarketId) {
+        try (Connection conn = DriverManager.getConnection(url, userName, password)) {
+            final DSLContext context = DSL.using(conn, SQLDialect.MYSQL);
+            final ResultQuery<Record5<Object, Object, Object, Object, Object>> resultQuery = context.select(field("GROCERY_ITEM.GROCERY_ITEM_ID"), field("GROCERY_ITEM.HYPERMARKET_ID"),
+                    field("GROCERY_ITEM.ITEM_NAME"), field("GROCERY_ITEM.BRAND"),
+                    field("GROCERY_ITEM.EXPIRATION_DATE")).from(table("GROCERY_ITEM")).where(field("GROCERY_ITEM.HYPERMARKET_ID").eq(hypermarketId));
+            final Result<Record5<Object, Object, Object, Object, Object>> result = resultQuery.fetch();
+
+            final List<GroceryItemInstance> groceryItemInstances = new ArrayList<>();
+            for (int i= 0; i < result.size(); i++) {
+                final int groceryItemId = (int) result.getValue(i, field("GROCERY_ITEM.GROCERY_ITEM_ID"));
+                final String itemName = (String) result.getValue(i, field("GROCERY_ITEM.ITEM_NAME"));
+                final String brand = (String) result.getValue(i, field("GROCERY_ITEM.BRAND"));
+                final Date expirationDate = (Date) result.getValue(i, field("GROCERY_ITEM.EXPIRATION_DATE"));
+
+                final GroceryItemInstance groceryItemInstance = new GroceryItemInstance();
+                groceryItemInstance.setId((long) groceryItemId);
+                groceryItemInstance.setHypermarketId(hypermarketId);
+                groceryItemInstance.setItemName(itemName);
+                groceryItemInstance.setBrand(brand);
+                groceryItemInstance.setExpirationDate(expirationDate.toLocalDate());
+
+                groceryItemInstances.add(groceryItemInstance);
+            }
+            return groceryItemInstances;
+        } catch (Exception exception) {
+            LOGGER.log(Level.SEVERE, exception.getMessage(), exception);
+            throw new DAOException(exception);
+        }
+    }
 }

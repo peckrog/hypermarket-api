@@ -51,6 +51,15 @@ public interface HypermarketsApi {
     Response deleteHypermarketById(@PathParam("hypermarketId") @ApiParam("The id of the hypermarket to retrieve") Long hypermarketId);
 
     @GET
+    @Path("/{hypermarketId}/grocery-items")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "retrieve all grocery items for a given hypermarket", notes = "", tags={ "grocery items",  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "all grocery items for the requested hypermarket", response = GroceryItemInstance.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "unexpected error", response = ErrorResponse.class, responseContainer = "List") })
+    Response getGroceryItemsForHypermarket(@PathParam("hypermarketId") @ApiParam("The id of the hypermarket to create the grocery item for") Long hypermarketId);
+
+    @GET
     @Path("/{hypermarketId}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Info for a specific hypermarket", notes = "", tags={ "hypermarkets" })
