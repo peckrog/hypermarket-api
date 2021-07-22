@@ -60,7 +60,7 @@ public class HypermarketDAO {
     throw new DAOException("INSERT FAILED WITHOUT EXCEPTION");
   }
 
-  public HypermarketInstance getHypermarketById(long id) throws DAOException {
+  public HypermarketInstance getHypermarketById(final long id) throws DAOException {
     try (Connection conn = DriverManager.getConnection(url, userName, password)) {
       final DSLContext context = DSL.using(conn, SQLDialect.MYSQL);
       final ResultQuery<Record3<Object, Object, Object>> query = context
